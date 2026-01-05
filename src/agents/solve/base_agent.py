@@ -123,7 +123,7 @@ class BaseAgent(ABC):
         # 1. Try to get from agent's specific config
         if hasattr(self, "agent_config") and self.agent_config.get("model"):
             return self.agent_config["model"]
-            
+
         # 2. Try to get from general LLM config (injected from MainSolver)
         if hasattr(self, "llm_config") and self.llm_config.get("model"):
             return self.llm_config["model"]
@@ -132,7 +132,7 @@ class BaseAgent(ABC):
         env_model = os.getenv("LLM_MODEL")
         if env_model:
             return env_model
-            
+
         raise ValueError(
             f"Error: Model not configured for agent {self.agent_name}\n"
             f"Please configure LLM_MODEL in .env OR activate a provider."

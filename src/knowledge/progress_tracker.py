@@ -87,14 +87,7 @@ class ProgressTracker:
                 except RuntimeError:
                     # Completely unable to get event loop, use thread-safe method
                     # Try to send via call_soon_threadsafe (if possible)
-                    try:
-                        # Get main event loop (if exists)
-                        import threading
-
-                        # If we're in background thread, need to find main event loop
-                        # Here we use a simple strategy: save progress to file, WebSocket will poll
-                    except:
-                        pass
+                    pass
         except (ImportError, Exception):
             # Broadcaster unavailable or error, continue using callbacks
             # Don't print error to avoid interfering with normal flow
